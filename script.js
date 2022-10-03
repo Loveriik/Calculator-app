@@ -12,45 +12,87 @@ function preparation() {
 }
 
 function clickNumber(number) {
-    if (signBlock.innerHTML == '') {
-        firstNumberBlock.innerHTML += number;
-    } else {
-        secondNumberBlock.innerHTML += number;
-    }
-
+    if (valueBlock.innerHTML !== '') {
+        firstNumberBlock.innerHTML = number;
+        signBlock.innerHTML = '';
+        secondNumberBlock.innerHTML = '';
+        valueBlock.innerHTML = '';
+    } else if (signBlock.innerHTML == '') {
+        if (firstNumberBlock.innerHTML.length === 1 && firstNumberBlock.innerHTML[0] == 0 ) {
+          firstNumberBlock.innerHTML = number;
+        } else {
+          firstNumberBlock.innerHTML += number;
+        }
+      } else if (valueBlock.innerHTML !==''){
+          return
+      } else if (secondNumberBlock.innerHTML.length === 1 && secondNumberBlock.innerHTML[0] == 0 ) {
+          secondNumberBlock.innerHTML = number;
+      } else {
+          secondNumberBlock.innerHTML += number;
+      }
 }
 
 function clickSign(sign) {
-    if (signBlock.innerHTML !== '' && secondNumberBlock.innerHTML !== ''){
-        alert('no');
-    } else {
+    if (valueBlock.innerHTML !== '') {
+        firstNumberBlock.innerHTML = valueBlock.innerHTML;
+        signBlock.innerHTML = '';
+        signBlock.innerHTML = sign;
+        secondNumberBlock.innerHTML = '';
+        valueBlock.innerHTML = '';
+    } else if (signBlock.innerHTML !== '' && secondNumberBlock.innerHTML !== '') {
+        return
+    } else if (firstNumberBlock.innerHTML == '') {
+        return
+    }  else {
         signBlock.innerHTML = sign ;
     }
 }
 
 function oppositeSign() {
-    if (signBlock.innerHTML == '') {
-        if (firstNumberBlock.innerHTML > 0) {
+    if (valueBlock.innerHTML !== '') {
+        if (valueBlock.innerHTML > 0) {
+            firstNumberBlock.innerHTML = -Math.abs(valueBlock.innerHTML);
+            signBlock.innerHTML = '';
+            secondNumberBlock.innerHTML = '';
+            valueBlock.innerHTML = '';
+        } else {
+            firstNumberBlock.innerHTML = Math.abs(valueBlock.innerHTML);
+            signBlock.innerHTML = '';
+            secondNumberBlock.innerHTML = '';
+            valueBlock.innerHTML = ''; 
+        }
+    } else if (signBlock.innerHTML == '') {
+        if (firstNumberBlock.innerHTML == '') {
+            return
+        } else if (firstNumberBlock.innerHTML > 0) {
             firstNumberBlock.innerHTML = -Math.abs(firstNumberBlock.innerHTML);
         } else {
             firstNumberBlock.innerHTML = Math.abs(firstNumberBlock.innerHTML);
         }
+    } else if (valueBlock.innerHTML !== '') {
+        return
+    } else if (secondNumberBlock.innerHTML == '') {
+        return
     } else if (secondNumberBlock.innerHTML > 0) {
             secondNumberBlock.innerHTML = -Math.abs(secondNumberBlock.innerHTML);
         } else {
             secondNumberBlock.innerHTML = Math.abs(secondNumberBlock.innerHTML);
-        }
+    }
 }
 
 function dot() {
     if (signBlock.innerHTML == '') {
         if (firstNumberBlock.innerHTML.includes('.')) {
             return
+        } else if (firstNumberBlock.innerHTML.length < 1) {
+            return
         } else {
             firstNumberBlock.innerHTML += '.';
         }
-    } else if (secondNumberBlock.innerHTML.includes('.')) {
-            return
+    } else if (valueBlock.innerHTML !== '' || secondNumberBlock.innerHTML.includes('.')) {
+        return
+    } else if (secondNumberBlock.innerHTML.length < 1) {
+        return
     } else {
         secondNumberBlock.innerHTML += '.';
     }
@@ -64,37 +106,67 @@ function clearBlocks() {
 }
 
 function percentage() {
-    if (signBlock.innerHTML == '') {
-        firstNumberBlock.innerHTML *= 0.01;
+    if (valueBlock.innerHTML !== '') {
+        firstNumberBlock.innerHTML = valueBlock.innerHTML * 0.01;
+        signBlock.innerHTML = '';
+        secondNumberBlock.innerHTML = '';
+        valueBlock.innerHTML = '';
+    } else if (signBlock.innerHTML == '' && firstNumberBlock.innerHTML == '') {
+        return
+    } else if (signBlock.innerHTML == '' && firstNumberBlock.innerHTML !== '') {
+        firstNumberBlock.innerHTML = firstNumberBlock.innerHTML * 0.01;
+    } else if (secondNumberBlock.innerHTML == '') {
+        return
     } else {
-        secondNumberBlock.innerHTML *= 0.01;
+        secondNumberBlock.innerHTML = secondNumberBlock.innerHTML * 0.01;
     }
+}
 
+function clearLastDigit() {
+    if (signBlock.innerHTML == '') {
+        firstNumberBlock.innerHTML = firstNumberBlock.innerHTML.toString().slice(0,-1);
+    } else if (valueBlock.innerHTML !==''){
+        return
+    } else {
+        secondNumberBlock.innerHTML = secondNumberBlock.innerHTML.toString().slice(0,-1);
+    }
 }
 
 function outcome() {
     let result;
 
     switch (signBlock.innerHTML) {
-        case '/': 
-            result = firstNumberBlock.innerHTML / secondNumberBlock.innerHTML;
-            valueBlock.innerHTML = result.toFixed(2);
-            break;
-
+        case '/':
+            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
+                return
+            } else { 
+                result = firstNumberBlock.innerHTML / secondNumberBlock.innerHTML;
+                valueBlock.innerHTML = result.toFixed(2);
+                break;
+            }
         case '*':
-            result = firstNumberBlock.innerHTML * secondNumberBlock.innerHTML;
-            valueBlock.innerHTML = result.toFixed(2);
-            break;
-
+            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
+                return
+            } else {
+                result = firstNumberBlock.innerHTML * secondNumberBlock.innerHTML;
+                valueBlock.innerHTML = result.toFixed(2);
+                break;
+            }
         case '+':
-            result = parseInt(firstNumberBlock.innerHTML) + parseInt(secondNumberBlock.innerHTML);
-            valueBlock.innerHTML = result.toFixed(2);
-            break;
-
+            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
+                return
+            } else {
+                result = parseFloat(firstNumberBlock.innerHTML) + parseFloat(secondNumberBlock.innerHTML);
+                valueBlock.innerHTML = result.toFixed(2);
+                break;
+            }
         case '-':
-            result = firstNumberBlock.innerHTML - secondNumberBlock.innerHTML;
-            valueBlock.innerHTML = result.toFixed(2);
-            break;
+            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
+                return
+            } else {
+                result = firstNumberBlock.innerHTML - secondNumberBlock.innerHTML;
+                valueBlock.innerHTML = result.toFixed(2);
+                break;
+            }
     }   
 }
-

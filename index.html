@@ -3,6 +3,7 @@
     <head>
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <script src="script.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,17 +11,19 @@
     <body onload="preparation()">
         <div id="body">
             <div id="display">
-                <div id="firstNumber">1</div>
-                <div id="signS">1</div>
-                <div id="secondNumber">1</div>
-                <div id="value">1</div>
+                <div id="displayAbove">
+                    <div id="firstNumber"></div>
+                    <div id="signS"></div>
+                    <div id="secondNumber"></div>
+                </div>
+                <div id="value"></div>
             </div>
             <div id="buttons">
                 <div id="AC" class="button_shape" onclick="clearBlocks()">
                     <p>AC</p>
                 </div>
-                <div id="sign" class="button_shape" onclick="oppositeSign()">
-                    <p>+/-</p>
+                <div id="delete" class="button_shape" onclick="clearLastDigit()">
+                    <p>C</p>
                 </div>
                 <div id="percentage" class="button_shape" onclick="percentage()">
                     <p>%</p>
@@ -63,6 +66,9 @@
                 </div>
                 <div id="add" class="button_shape" onclick="clickSign('+')">
                     <p>+</p>
+                </div>
+                <div id="sign" class="button_shape" onclick="oppositeSign()">
+                    <p>+/-</p>
                 </div>
                 <div id="zero" class="button_shape" onclick="clickNumber(0)">
                     <p>0</p>
