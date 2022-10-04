@@ -134,39 +134,28 @@ function clearLastDigit() {
 
 function outcome() {
     let result;
-
-    switch (signBlock.innerHTML) {
-        case '/':
-            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
-                return
-            } else { 
-                result = firstNumberBlock.innerHTML / secondNumberBlock.innerHTML;
+    const firstHTML = firstNumberBlock.innerHTML;
+    const secondHTML = secondNumberBlock.innerHTML;
+    if (firstHTML === '' || secondHTML === '') {
+        return
+    } else {
+        switch (signBlock.innerHTML) {
+            case '÷':
+                result = firstHTML / secondHTML;
                 valueBlock.innerHTML = result.toFixed(2);
                 break;
-            }
-        case '*':
-            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
-                return
-            } else {
-                result = firstNumberBlock.innerHTML * secondNumberBlock.innerHTML;
+            case '*':
+                result = firstHTML * secondHTML;
                 valueBlock.innerHTML = result.toFixed(2);
                 break;
-            }
-        case '+':
-            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
-                return
-            } else {
-                result = parseFloat(firstNumberBlock.innerHTML) + parseFloat(secondNumberBlock.innerHTML);
+            case '+':
+                result = parseFloat(firstHTML) + parseFloat(secondHTML);
                 valueBlock.innerHTML = result.toFixed(2);
                 break;
-            }
-        case '-':
-            if (firstNumberBlock.innerHTML === '' || secondNumberBlock.innerHTML === '') {
-                return
-            } else {
-                result = firstNumberBlock.innerHTML - secondNumberBlock.innerHTML;
+            case '-':
+                result = firstHTML - secondHTML;
                 valueBlock.innerHTML = result.toFixed(2);
                 break;
-            }
-    }   
+        }   
+    }
 }

@@ -4,6 +4,9 @@
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
         <script src="script.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,72 +14,70 @@
     <body onload="preparation()">
         <div id="body">
             <div id="display">
-                <div id="displayAbove">
-                    <div id="firstNumber"></div>
-                    <div id="signS"></div>
-                    <div id="secondNumber"></div>
-                </div>
+                <div id="firstNumber"></div>
+                <div id="signS"></div>
+                <div id="secondNumber"></div>
                 <div id="value"></div>
             </div>
             <div id="buttons">
-                <div id="AC" class="button_shape" onclick="clearBlocks()">
+                <div id="AC" class="button_shape top-color" onclick="clearBlocks()">
                     <p>AC</p>
                 </div>
-                <div id="delete" class="button_shape" onclick="clearLastDigit()">
+                <div id="delete" class="button_shape top-color" onclick="clearLastDigit()">
                     <p>C</p>
                 </div>
-                <div id="percentage" class="button_shape" onclick="percentage()">
+                <div id="percentage" class="button_shape top-color" onclick="percentage()">
                     <p>%</p>
                 </div>
-                <div id="divide" class="button_shape" onclick="clickSign('/')">
-                    <p>/</p>
+                <div id="divide" class="button_shape right-buttons" onclick="clickSign('÷')">
+                    <p>÷</p>
                 </div>
-                <div id="seven" class="button_shape" onclick="clickNumber(7)">
+                <div id="seven" class="button_shape numbers-color" onclick="clickNumber(7)">
                     <p>7</p>
                 </div>
-                <div id="eight" class="button_shape" onclick="clickNumber(8)">
+                <div id="eight" class="button_shape numbers-color" onclick="clickNumber(8)">
                     <p>8</p>
                 </div>
-                <div id="nine" class="button_shape" onclick="clickNumber(9)">
+                <div id="nine" class="button_shape numbers-color" onclick="clickNumber(9)">
                     <p>9</p>
                 </div>
-                <div id="multiply" class="button_shape" onclick="clickSign('*')">
+                <div id="multiply" class="button_shape right-buttons" onclick="clickSign('*')">
                     <p>*</p>
                 </div>
-                <div id="four" class="button_shape" onclick="clickNumber(4)">
+                <div id="four" class="button_shape numbers-color" onclick="clickNumber(4)">
                     <p>4</p>
                 </div>
-                <div id="five" class="button_shape" onclick="clickNumber(5)">
+                <div id="five" class="button_shape numbers-color" onclick="clickNumber(5)">
                     <p>5</p>
                 </div>
-                <div id="six" class="button_shape" onclick="clickNumber(6)">
+                <div id="six" class="button_shape numbers-color" onclick="clickNumber(6)">
                     <p>6</p>
                 </div>
-                <div id="subtract" class="button_shape" onclick="clickSign('-')">
+                <div id="subtract" class="button_shape right-buttons" onclick="clickSign('-')">
                     <p>-</p>
                 </div>
-                <div id="one" class="button_shape" onclick="clickNumber(1)">
+                <div id="one" class="button_shape numbers-color" onclick="clickNumber(1)">
                     <p>1</p>
                 </div>
-                <div id="two" class="button_shape" onclick="clickNumber(2)">
+                <div id="two" class="button_shape numbers-color" onclick="clickNumber(2)">
                     <p>2</p>
                 </div>
-                <div id="three" class="button_shape" onclick="clickNumber(3)">
+                <div id="three" class="button_shape numbers-color" onclick="clickNumber(3)">
                     <p>3</p>
                 </div>
-                <div id="add" class="button_shape" onclick="clickSign('+')">
+                <div id="add" class="button_shape right-buttons" onclick="clickSign('+')">
                     <p>+</p>
                 </div>
-                <div id="sign" class="button_shape" onclick="oppositeSign()">
+                <div id="sign" class="button_shape numbers-color" onclick="oppositeSign()">
                     <p>+/-</p>
                 </div>
-                <div id="zero" class="button_shape" onclick="clickNumber(0)">
+                <div id="zero" class="button_shape numbers-color" onclick="clickNumber(0)">
                     <p>0</p>
                 </div>
-                <div id="comma" class="button_shape" onclick="dot()">
+                <div id="comma" class="button_shape numbers-color" onclick="dot()">
                     <p>.</p>
                 </div>
-                <div id="equal" class="button_shape" onclick="outcome()">
+                <div id="equal" class="button_shape equal-color" onclick="outcome()">
                     <p>=</p>
                 </div>
             </div>
